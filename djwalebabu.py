@@ -37,7 +37,7 @@ def load_cogs():
             client.load_extension(f"cogs.{file[:-3]}")
 
 @client.command()
-@clients.is_owner()
+@commands.is_owner()
 async def r(ctx):
   for file in os.listdir("./cogs"):
     if file.endswith(".py") and not file.startswith("_"):
