@@ -1,11 +1,21 @@
 #importing databases we need for the projects
-import os
 import discord
-from discord.ext import clients, tasks
-from discord_components import DiscordComponents
-import asyncio
+from discord.errors import ClientException
+from discord.ext import commands
+from discord.ext import tasks
+import os
+from decouple import config
+from discord.enums import UserFlags
+from discord.flags import Intents
 import random
+import json
 from datetime import datetime
+from discord.user import ClientUser
+import requests
+import asyncio
+from random import choice
+
+
 
 #adding our client (our bot , i am using client as bot)
 #setting up Intents
@@ -14,8 +24,8 @@ intents = discord.Intents.default()
 intents.members = True
 
 #senpai variables
-senpai_id = 88841403666283316
-client = clients.Bot(command_prefix=clients.when_mentioned_or( '?', 'play.'), case_insensitive=True, intents=intents)
+senpai_id = 888414036662833164
+client = commands.Bot(command_prefix=commands.when_mentioned_or( '?', 'D.'), case_insensitive=True, intents=intents)
 client.remove_command("help")
 
 print(">>>> The Master Is Logging To The Server... \n >>>Please wait for the connections to stablish...<<<<")
@@ -32,7 +42,7 @@ async def r(ctx):
   for file in os.listdir("./cogs"):
     if file.endswith(".py") and not file.startswith("_"):
       client.reload_extension(f"cogs.{file[:-3]}")
-      await ctx.send(">> Senpai reloaded cogs")
+      await ctx.send(">>DJ  reloaded cogs")
     else:
         await ctx.send("SOME ERROR OCCURED !")
 
