@@ -14,7 +14,7 @@ music = DiscordUtils.Music()
 class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.Ratio_id = 892408470870057030
+        self.DJ_id = 892408470870057030
 
     @commands.command()
     async def join (self , ctx):
@@ -51,7 +51,7 @@ class Music(commands.Cog):
     async def queue(self,ctx):
         player = music.get_player(guild_id=ctx.guild.id)
         song = await player.queue()
-        await ctx.send(f"Ratio queued The song {song.name}")
+        await ctx.send(f"DJ queued The song {song.name}")
 
 
 
@@ -59,13 +59,13 @@ class Music(commands.Cog):
     async def pause(self,ctx):
         player = music.get_player(guild_id=ctx.guild.id)
         song = await player.pause()
-        await ctx.send(f"Ratio Paused The song {song.name}")
+        await ctx.send(f"DJ Paused The song {song.name}")
 
     @commands.command()
     async def resume(self,ctx):
         player = music.get_player(guild_id=ctx.guild.id)
         song = await player.resume()
-        await ctx.send(f"Ratio Resumed The song {song.name}")
+        await ctx.send(f"DJ Resumed The song {song.name}")
 
     @commands.command()
     async def loop(self, ctx):
