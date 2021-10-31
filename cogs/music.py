@@ -15,6 +15,7 @@ class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.Ratio_id = 892408470870057030
+        
     @commands.command()
     async def join (self , ctx):
         if ctx.author.voice is None:

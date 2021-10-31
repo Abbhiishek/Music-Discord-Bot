@@ -40,11 +40,11 @@ def load_cogs():
 @commands.is_owner()
 async def r(ctx):
   for file in os.listdir("./cogs"):
-    if file.endswith(".py") and not file.startswith("_"):
-      client.reload_extension(f"cogs.{file[:-3]}")
-      await ctx.send(">>DJ  reloaded cogs")
-    else:
-        await ctx.send("SOME ERROR OCCURED !")
+        if file.endswith(".py"):
+            client.load_extension(f"cogs.{file[:-3]}")
+            await ctx.send(">>DJ  reloaded cogs")
+        else:
+            await ctx.send("SOME ERROR OCCURED !")
 
  #creating a task that change the activity status of the bot every 5 seconds so that it show different information evry 5 second. 
 
@@ -62,7 +62,7 @@ async def on_ready():
     load_cogs()
     print(f">> Logged in as : {client.user.name} \n>> ID : {client.user.id}")
     print(f">> Total  Active Servers : {len(client.guilds)}")
-    print('>> Senpai is Onwork.')
+    print('>> music is Onwork.')
     print(">> Data loaded.")
                
 #do stuffs
