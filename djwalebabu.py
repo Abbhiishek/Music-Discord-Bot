@@ -71,7 +71,7 @@ async def on_ready():
 async def status(ctx):
             
             async with ctx.channel.typing():
-                embed = discord.Embed(title="senpai.io", description="These are the config of senpai.io",timestamp=datetime.utcnow(),
+                embed = discord.Embed(title="Dj.io", description="These are the config of Dj.io",timestamp=datetime.utcnow(),
                                   color=discord.Colour.red())
                 embed.add_field(name="version" , value=" 1.01.02", inline=True)
                 embed.add_field(name="created by", value='<@752362202945683480>',inline=True)
