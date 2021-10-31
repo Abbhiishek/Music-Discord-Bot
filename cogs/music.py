@@ -15,7 +15,7 @@ class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.Ratio_id = 892408470870057030
-        
+
     @commands.command()
     async def join (self , ctx):
         if ctx.author.voice is None:
@@ -50,8 +50,8 @@ class Music(commands.Cog):
     @commands.command()
     async def queue(self,ctx):
         player = music.get_player(guild_id=ctx.guild.id)
-        song = await player.pause()
-        await ctx.send(f"Ratio Paused The song {song.name}")
+        song = await player.queue()
+        await ctx.send(f"Ratio queued The song {song.name}")
 
 
 
