@@ -45,7 +45,9 @@ class Music(commands.Cog):
             song= await player.queue(url, search =True)
             await ctx.send(f"{','.join([song.name for song in player.current_queue()])}")
 
-
+    @commands.command()
+    async def skip(self , ctx):
+        player = music.get_player(guild_id=ctx.guild.id)
 
     @commands.command()
     async def queue(self,ctx):
