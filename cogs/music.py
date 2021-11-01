@@ -48,14 +48,14 @@ class Music(commands.Cog):
     @commands.command()
     async def skip(self , ctx):
         player = music.get_player(guild_id=ctx.guild.id)
+        song = await player.skip()
+        await ctx.send(f"DJ skipped The song {song.name}")
 
     @commands.command()
     async def queue(self,ctx):
         player = music.get_player(guild_id=ctx.guild.id)
         song = await player.queue()
         await ctx.send(f"DJ queued The song {song.name}")
-
-
 
     @commands.command()
     async def pause(self,ctx):
