@@ -27,7 +27,7 @@ class Music(commands.Cog):
             await ctx.voice_client.move_to(voice_channel)
 
     @commands.command()
-    async def disconnect(self,ctx):
+    async def leave(self,ctx):
         await ctx.voice_client.disconnect()
         await ctx.send("The bot is not connected to a voice channel.")
 
@@ -48,8 +48,11 @@ class Music(commands.Cog):
     @commands.command()
     async def skip(self , ctx):
         player = music.get_player(guild_id=ctx.guild.id)
-        song = await player.skip()
-        await ctx.send(f"DJ skipped The song {song.name}")
+        data = await player.skip(force=True)
+        if len(data) == 2:
+           await ctx.send(f"Skipped from {data[0].name} to {data[1].name}")
+        else:
+            await ctx.send(f"Skipped {data[0].name}")
 
     @commands.command()
     async def queue(self,ctx):
@@ -88,6 +91,18 @@ class Music(commands.Cog):
         player = music.get_player(guild_id=ctx.guild.id)
         song= player.now_playing()
         await ctx.send(song.name)
+
+    @commands.command()
+    async def volume(self,ctx , vol):
+        player = music.get_player(guild_id=ctx.guild.id)
+        song, volume = await player.change_volume(float(vol) / 100) # volume should be a float between 0 to 1
+        await ctx.send(f"Changed volume for {song.name} to {volume*100}%")
+
+    @commands.command()
+    async def remove(self ,ctx, index):
+        player = music.get_player(guild_id=ctx.guild.id)
+        song = await player.remove_from_queue(int(index))
+        await ctx.send(f"Removed {song.name} from queue")
 
 
 def setup(client):
