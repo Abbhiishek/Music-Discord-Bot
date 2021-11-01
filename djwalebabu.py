@@ -48,10 +48,10 @@ async def r(ctx):
 
  #creating a task that change the activity status of the bot every 5 seconds so that it show different information evry 5 second. 
 
-@tasks.loop(seconds=5)
+@tasks.loop(seconds=4)
 async def switchpresence():
     await client.wait_until_ready()
-    sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
+    sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!","Made by Abhishek Kushwaha"]
     ast = random.choice(sm)
     await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"senpai & {ast}"))
 

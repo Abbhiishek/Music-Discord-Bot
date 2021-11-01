@@ -55,10 +55,9 @@ class Music(commands.Cog):
             await ctx.send(f"Skipped {data[0].name}")
 
     @commands.command()
-    async def queue(self,ctx,url):
+    async def queue(self,ctx):
         player = music.get_player(guild_id=ctx.guild.id)
-        song = await player.queue()
-        await ctx.send(f"DJ queued The song {song.name}")
+        await ctx.send(f"{', '.join([song.name for song in player.current_queue()])}")
 
     @commands.command()
     async def pause(self,ctx):
