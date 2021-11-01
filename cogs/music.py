@@ -68,6 +68,11 @@ class Music(commands.Cog):
         player = music.get_player(guild_id=ctx.guild.id)
         song = await player.resume()
         await ctx.send(f"DJ Resumed The song {song.name}")
+    @commands.command()
+    async def stop(self,ctx):
+        player = music.get_player(guild_id=ctx.guild.id)
+        song = await player.stop()
+        await ctx.send(f"DJ stoped The song {song.name}")
 
     @commands.command()
     async def loop(self, ctx):
