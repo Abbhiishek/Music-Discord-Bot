@@ -55,7 +55,7 @@ class Music(commands.Cog):
             await ctx.send(f"Skipped {data[0].name}")
 
     @commands.command()
-    async def queue(self,ctx):
+    async def queue(self,ctx,url):
         player = music.get_player(guild_id=ctx.guild.id)
         song = await player.queue()
         await ctx.send(f"DJ queued The song {song.name}")
