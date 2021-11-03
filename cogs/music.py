@@ -28,8 +28,10 @@ class Music(commands.Cog):
 
     @commands.command()
     async def leave(self,ctx):
+        player = music.get_player(guild_id=ctx.guild.id)
+        await player.stop()
         await ctx.voice_client.disconnect()
-        await ctx.send("The bot is not connected to a voice channel.")
+        await ctx.send("The bot left the  voice channel.")
 
 
     @commands.command()
@@ -55,7 +57,7 @@ class Music(commands.Cog):
             await ctx.send(f"Skipped {data[0].name}")
 
     @commands.command()
-    async def queue(self,ctx):
+    async def queue(self,ctx,url):
         player = music.get_player(guild_id=ctx.guild.id)
         await ctx.send(f"{', '.join([song.name for song in player.current_queue()])}")
 
