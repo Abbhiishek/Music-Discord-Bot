@@ -8,7 +8,7 @@ import os
 import DiscordUtilsMod
 
 
-music = DiscordUtils.Music()
+music = DiscordUtilsMod.Music()
 
 
 class Music(commands.Cog):
