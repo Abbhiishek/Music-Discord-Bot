@@ -5,7 +5,7 @@ from discord.ext.commands.core import command
 from discord.player import FFmpegAudio
 import youtube_dl
 import os
-import DiscordUtils
+import DiscordUtilsMod
 
 
 music = DiscordUtils.Music()
